@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Кибербезопасность · Памятка</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #1f2328;
+        }
+
+        .container {
+            max-width: 1012px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* шапка */
+        .header {
+            background-color: #f6f8fa;
+            border-bottom: 1px solid #d0d7de;
+            padding: 24px 0 20px;
+            margin-bottom: 24px;
+        }
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            word-break: break-word;
+        }
+        .header p {
+            font-size: 14px;
+            color: #57606a;
+        }
+        .header-meta {
+            margin-top: 12px;
+            font-size: 12px;
+            color: #57606a;
+            border-top: 1px solid #d0d7de;
+            padding-top: 12px;
+            display: inline-block;
+        }
+
+        /* секции */
+        .section {
+            margin: 32px 0 40px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #d0d7de;
+            margin-bottom: 20px;
+        }
+
+        /* ========== ПРАВИЛА — ИСПРАВЛЕНО ДЛЯ ТЕЛЕФОНОВ ========== */
+        .rules-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .rule-card {
+            background: #ffffff;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 16px;
+            width: calc(50% - 8px); /* по умолчанию две колонки */
+        }
+        .rule-card:hover {
+            background-color: #f6f8fa;
+        }
+        .rule-number {
+            font-size: 12px;
+            font-weight: 600;
+            color: #57606a;
+            margin-bottom: 8px;
+        }
+        .rule-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .rule-desc {
+            font-size: 13px;
+            color: #57606a;
+        }
+
+        /* генератор паролей */
+        .password-box {
+            background: #ffffff;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 20px;
+        }
+        .password-field {
+            background: #f6f8fa;
+            padding: 14px 12px;
+            font-family: 'SF Mono', 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 15px;
+            font-weight: 500;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            word-break: break-all;
+            color: #1f2328;
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .btn {
+            background-color: #f6f8fa;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.1s;
+            color: #1f2328;
+        }
+        .btn:hover {
+            background-color: #f3f4f6;
+            border-color: #8c959f;
+        }
+
+        /* чек-лист */
+        .checklist {
+            background: #ffffff;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 16px 20px;
+        }
+        .checklist ol {
+            padding-left: 24px;
+        }
+        .checklist li {
+            padding: 6px 0;
+            border-bottom: 1px solid #eaeef2;
+        }
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        /* предупреждение */
+        .warning {
+            background: #fffbeb;
+            border-left: 4px solid #d4a72c;
+            border: 1px solid #f0e6c5;
+            border-left-width: 4px;
+            border-radius: 6px;
+            padding: 16px 20px;
+        }
+        .phish-link {
+            font-family: monospace;
+            background: #f6f8fa;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 13px;
+            border: 1px solid #d0d7de;
+            word-break: break-all;
+            display: inline-block;
+        }
+
+        /* ссылки */
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .link-card {
+            background: #ffffff;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 12px 20px;
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+        }
+        .link-card a {
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .link-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* футер */
+        .footer {
+            margin-top: 48px;
+            padding: 24px 0;
+            border-top: 1px solid #d0d7de;
+            font-size: 12px;
+            text-align: center;
+            color: #57606a;
+        }
+
+        /* тост */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1f2328;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            z-index: 1000;
+            white-space: nowrap;
+        }
+
+        /* ========== АДАПТИВ ДЛЯ ТЕЛЕФОНОВ ========== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 12px;
+            }
+            .rule-card {
+                width: 100%; /* на телефонах карточки в одну колонку */
+            }
+            .section-title {
+                font-size: 18px;
+            }
+            .header h1 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 540px) {
+            body {
+                font-size: 13px;
+            }
+            .rule-title {
+                font-size: 14px;
+            }
+            .rule-desc {
+                font-size: 12px;
+            }
+            .btn {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+            .password-field {
+                font-size: 13px;
+            }
+            .link-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="container">
+        <h1>Кибербезопасность для школьников</h1>
+        <p>Сайт-памятка · Итоговый проект, 10 класс</p>
+        <div class="header-meta">Продукт: статичный веб-сайт / генератор паролей / чек-лист</div>
+    </div>
+</div>
+
+<main class="container">
+    <!-- 10 правил -->
+    <section class="section">
+        <h2 class="section-title">Правила кибергигиены</h2>
+        <div class="rules-grid" id="rulesGrid"></div>
+    </section>
+
+    <!-- Генератор паролей -->
+    <section class="section">
+        <h2 class="section-title">Генератор паролей</h2>
+        <div class="password-box">
+            <div class="password-field" id="passwordField"></div>
+            <div class="btn-group">
+                <button class="btn" id="generateBtn">Сгенерировать</button>
+                <button class="btn" id="copyBtn">Копировать</button>
+            </div>
+            <p style="margin-top: 12px; font-size: 11px; color: #57606a;">Длина 14 символов · заглавные + строчные + цифры + спецсимволы</p>
+        </div>
+    </section>
+
+    <!-- Чек-лист -->
+    <section class="section">
+        <h2 class="section-title">Что делать при взломе аккаунта</h2>
+        <div class="checklist">
+            <ol>
+                <li>Сменить пароль (14+ символов, цифры, спецсимволы)</li>
+                <li>Включить двухфакторную аутентификацию</li>
+                <li>Сообщить друзьям о компрометации</li>
+                <li>Проверить активные сессии и устройства</li>
+                <li>Обратиться в службу поддержки</li>
+                <li>Сделать резервную копию важных данных</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Фишинг -->
+    <section class="section">
+        <h2 class="section-title">Пример фишинговой ссылки</h2>
+        <div class="warning">
+            <strong>⚠️ Внимание</strong><br>
+            <span class="phish-link">https://steamcornmunity.com/login</span>
+            <p style="margin-top: 12px; font-size: 13px;">Легитимный домен: <strong>steamcommunity.com</strong>. Всегда проверяйте адресную строку.</p>
+        </div>
+    </section>
+
+    <!-- Ресурсы -->
+    <section class="section">
+        <h2 class="section-title">Официальные ресурсы</h2>
+        <div class="links-grid">
+            <div class="link-card"><a href="https://мвд.рф" target="_blank">МВД РФ — Киберполиция</a></div>
+            <div class="link-card"><a href="https://www.kaspersky.ru" target="_blank">Лаборатория Касперского</a></div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2026 · Зайцев Артём · Итоговый проект</p>
+        <p>Свободное распространение · Версия 1.0</p>
+    </div>
+</footer>
+
+<script>
+    // 10 правил
+    const rules = [
+        { num: 1, title: "Уникальные пароли", desc: "Один пароль — один сервис. Повторение увеличивает риски." },
+        { num: 2, title: "Двухфакторная аутентификация", desc: "2FA защищает даже при утечке пароля." },
+        { num: 3, title: "Проверка ссылок", desc: "Фишинговые URL отличаются орфографией." },
+        { num: 4, title: "Конфиденциальность", desc: "Пароли, SMS-коды, CVV не передаются третьим лицам." },
+        { num: 5, title: "Приватность в соцсетях", desc: "Не публикуйте адрес, школу, расписание." },
+        { num: 6, title: "Скептицизм к подаркам", desc: "Бесплатные скины / валюты — схема фишинга." },
+        { num: 7, title: "VPN для публичных Wi-Fi", desc: "Шифруйте трафик в открытых сетях." },
+        { num: 8, title: "Антивирус и обновления", desc: "Регулярно обновляйте ПО." },
+        { num: 9, title: "Незнакомцы в сети", desc: "Не присылайте личные фото и данные." },
+        { num: 10, title: "Реагирование на инциденты", desc: "Сообщайте взрослым о травле или взломе." }
+    ];
+
+    const grid = document.getElementById('rulesGrid');
+    rules.forEach(rule => {
+        const card = document.createElement('div');
+        card.className = 'rule-card';
+        card.innerHTML = `
+            <div class="rule-number">#${rule.num}</div>
+            <div class="rule-title">${rule.title}</div>
+            <div class="rule-desc">${rule.desc}</div>
+        `;
+        grid.appendChild(card);
+    });
+
+    // Генератор паролей (надёжный)
+    function generateSecurePassword(length = 14) {
+        const upper = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+        const lower = "abcdefghijkmnopqrstuvwxyz";
+        const digits = "23456789";
+        const symbols = "!@#$%&*+?";
+        const allChars = upper + lower + digits + symbols;
+        
+        let password = "";
+        password += upper[Math.floor(Math.random() * upper.length)];
+        password += lower[Math.floor(Math.random() * lower.length)];
+        password += digits[Math.floor(Math.random() * digits.length)];
+        password += symbols[Math.floor(Math.random() * symbols.length)];
+        
+        for (let i = password.length; i < length; i++) {
+            password += allChars[Math.floor(Math.random() * allChars.length)];
+        }
+        
+        // перемешивание
+        return password.split('').sort(() => Math.random() - 0.5).join('');
+    }
+
+    const passField = document.getElementById('passwordField');
+    const generateBtn = document.getElementById('generateBtn');
+    const copyBtn = document.getElementById('copyBtn');
+
+    function showToast(msg) {
+        const old = document.querySelector('.toast');
+        if (old) old.remove();
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = msg;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2000);
+    }
+
+    function updatePassword() {
+        passField.textContent = generateSecurePassword(14);
+    }
+
+    updatePassword();
+
+    generateBtn.addEventListener('click', updatePassword);
+
+    copyBtn.addEventListener('click', async () => {
+        const pwd = passField.textContent;
+        if (pwd && pwd.length > 0) {
+            try {
+                await navigator.clipboard.writeText(pwd);
+                showToast('Пароль скопирован');
+            } catch (e) {
+                const textarea = document.createElement('textarea');
+                textarea.value = pwd;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('Пароль скопирован');
+            }
+        } else {
+            showToast('Сначала сгенерируйте пароль');
+        }
+    });
+</script>
+</body>
+</html>
