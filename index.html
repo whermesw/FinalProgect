@@ -25,7 +25,6 @@
             padding: 0 16px;
         }
 
-        /* шапка */
         .header {
             background-color: #f6f8fa;
             border-bottom: 1px solid #d0d7de;
@@ -50,7 +49,6 @@
             display: inline-block;
         }
 
-        /* секции */
         .section {
             margin: 32px 0 40px;
         }
@@ -62,7 +60,6 @@
             margin-bottom: 20px;
         }
 
-        /* ========== ПРАВИЛА — ИСПРАВЛЕНО ДЛЯ ТЕЛЕФОНОВ ========== */
         .rules-grid {
             display: flex;
             flex-wrap: wrap;
@@ -73,7 +70,7 @@
             border: 1px solid #d0d7de;
             border-radius: 6px;
             padding: 16px;
-            width: calc(50% - 8px); /* по умолчанию две колонки */
+            width: calc(50% - 8px);
         }
         .rule-card:hover {
             background-color: #f6f8fa;
@@ -94,7 +91,6 @@
             color: #57606a;
         }
 
-        /* генератор паролей */
         .password-box {
             background: #ffffff;
             border: 1px solid #d0d7de;
@@ -134,7 +130,6 @@
             border-color: #8c959f;
         }
 
-        /* чек-лист */
         .checklist {
             background: #ffffff;
             border: 1px solid #d0d7de;
@@ -152,7 +147,6 @@
             border-bottom: none;
         }
 
-        /* предупреждение */
         .warning {
             background: #fffbeb;
             border-left: 4px solid #d4a72c;
@@ -172,7 +166,6 @@
             display: inline-block;
         }
 
-        /* ссылки */
         .links-grid {
             display: flex;
             flex-wrap: wrap;
@@ -196,7 +189,6 @@
             text-decoration: underline;
         }
 
-        /* футер */
         .footer {
             margin-top: 48px;
             padding: 24px 0;
@@ -206,7 +198,6 @@
             color: #57606a;
         }
 
-        /* тост */
         .toast {
             position: fixed;
             bottom: 24px;
@@ -221,13 +212,86 @@
             white-space: nowrap;
         }
 
-        /* ========== АДАПТИВ ДЛЯ ТЕЛЕФОНОВ ========== */
+        /* Новые стили */
+        .interactive-box {
+            background: #ffffff;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+        }
+        .interactive-box .question-url {
+            font-family: 'SF Mono', 'JetBrains Mono', 'Courier New', monospace;
+            background: #f6f8fa;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+            word-break: break-all;
+            display: inline-block;
+            border: 1px solid #d0d7de;
+        }
+        .result-text {
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        .explanation-text {
+            font-size: 13px;
+            color: #57606a;
+            margin-top: 4px;
+        }
+        .details-card {
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .details-card summary {
+            padding: 12px 16px;
+            font-weight: 600;
+            cursor: pointer;
+            background: #f6f8fa;
+            list-style: none;
+        }
+        .details-card summary::-webkit-details-marker {
+            display: none;
+        }
+        .details-card summary:after {
+            content: '▸';
+            float: right;
+            color: #57606a;
+            font-size: 12px;
+        }
+        .details-card[open] summary:after {
+            content: '▾';
+        }
+        .details-card .details-content {
+            padding: 8px 16px 16px;
+            font-size: 13px;
+            color: #1f2328;
+            background: #fff;
+        }
+        .password-check-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            font-family: 'SF Mono', 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 15px;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+        .password-verdict {
+            font-size: 14px;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 12px;
             }
             .rule-card {
-                width: 100%; /* на телефонах карточки в одну колонку */
+                width: 100%;
             }
             .section-title {
                 font-size: 18px;
@@ -277,7 +341,30 @@
         <div class="rules-grid" id="rulesGrid"></div>
     </section>
 
-    <!-- Генератор паролей -->
+    <!-- Мифы и реальность (карточки-перевёртыши) -->
+    <section class="section">
+        <h2 class="section-title">Мифы и реальность</h2>
+        <div class="details-card">
+            <summary>«VPN делает меня полностью анонимным»</summary>
+            <div class="details-content">
+                Нет. VPN только меняет твой IP-адрес и шифрует трафик до сервера. Провайдер VPN всё ещё видит, что ты делаешь. Полную анонимность дают только специальные инструменты вроде Tor, да и то с оговорками.
+            </div>
+        </div>
+        <div class="details-card">
+            <summary>«Маки не ловят вирусы»</summary>
+            <div class="details-content">
+                Ловят, и ещё как. Просто под Windows исторически сложилось больше вредоносного ПО. Но макросы-шифровальщики и трояны под macOS давно реальность. Не пренебрегай антивирусом даже на Mac.
+            </div>
+        </div>
+        <div class="details-card">
+            <summary>«Режим инкогнито скрывает всё»</summary>
+            <div class="details-content">
+                Режим инкогнито только не сохраняет историю, куки и данные форм на твоём устройстве. Провайдер, системный администратор сети и владельцы сайтов всё равно видят твою активность.
+            </div>
+        </div>
+    </section>
+
+    <!-- Генератор паролей + проверка пароля -->
     <section class="section">
         <h2 class="section-title">Генератор паролей</h2>
         <div class="password-box">
@@ -287,6 +374,14 @@
                 <button class="btn" id="copyBtn">Копировать</button>
             </div>
             <p style="margin-top: 12px; font-size: 11px; color: #57606a;">Длина 14 символов · заглавные + строчные + цифры + спецсимволы</p>
+
+            <!-- Проверка надёжности пароля -->
+            <div style="margin-top: 28px; border-top: 1px solid #eaeef2; padding-top: 20px;">
+                <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Проверь свой пароль</h3>
+                <input type="text" id="passwordCheckInput" class="password-check-input" placeholder="Введи пароль для проверки" autocomplete="off">
+                <button class="btn" id="checkPasswordBtn" style="margin-top: 8px;">Проверить</button>
+                <div id="passwordVerdict" class="password-verdict" style="margin-top: 10px;"></div>
+            </div>
         </div>
     </section>
 
@@ -305,13 +400,29 @@
         </div>
     </section>
 
-    <!-- Фишинг -->
+    <!-- Пример фишинга (оставлен как демо) -->
     <section class="section">
         <h2 class="section-title">Пример фишинговой ссылки</h2>
         <div class="warning">
             <strong>⚠️ Внимание</strong><br>
             <span class="phish-link">https://steamcornmunity.com/login</span>
             <p style="margin-top: 12px; font-size: 13px;">Легитимный домен: <strong>steamcommunity.com</strong>. Всегда проверяйте адресную строку.</p>
+        </div>
+    </section>
+
+    <!-- Тест на фишинг (интерактивная викторина) -->
+    <section class="section">
+        <h2 class="section-title">Сможешь отличить подделку?</h2>
+        <div class="interactive-box">
+            <p style="margin-bottom: 6px; font-size: 13px; color: #57606a;">Нажми, настоящий это сайт или фишинг:</p>
+            <div class="question-url" id="phishQuestion">steamcommuniity.com/login</div>
+            <div class="btn-group" style="margin-top: 12px;">
+                <button class="btn" id="phishBtn">🎣 Фишинг</button>
+                <button class="btn" id="realBtn">✅ Настоящий</button>
+            </div>
+            <div id="phishResult" class="result-text"></div>
+            <div id="phishExplanation" class="explanation-text"></div>
+            <button class="btn" id="nextPhishBtn" style="margin-top: 14px; border-style: dashed;">Другой пример ▸</button>
         </div>
     </section>
 
@@ -359,7 +470,7 @@
         grid.appendChild(card);
     });
 
-    // Генератор паролей (надёжный)
+    // Генератор паролей
     function generateSecurePassword(length = 14) {
         const upper = "ABCDEFGHJKLMNPQRSTUVWXYZ";
         const lower = "abcdefghijkmnopqrstuvwxyz";
@@ -377,7 +488,6 @@
             password += allChars[Math.floor(Math.random() * allChars.length)];
         }
         
-        // перемешивание
         return password.split('').sort(() => Math.random() - 0.5).join('');
     }
 
@@ -422,6 +532,84 @@
             showToast('Сначала сгенерируйте пароль');
         }
     });
+
+    // Проверка пароля
+    const passwordInput = document.getElementById('passwordCheckInput');
+    const checkBtn = document.getElementById('checkPasswordBtn');
+    const verdictDiv = document.getElementById('passwordVerdict');
+
+    function analyzePassword(pwd) {
+        if (!pwd) return { score: 0, message: 'Введи хоть что-нибудь. Даже «12345».' };
+        const length = pwd.length;
+        const hasUpper = /[A-Z]/.test(pwd);
+        const hasLower = /[a-z]/.test(pwd);
+        const hasDigit = /[0-9]/.test(pwd);
+        const hasSpecial = /[^A-Za-z0-9]/.test(pwd);
+        const variety = [hasUpper, hasLower, hasDigit, hasSpecial].filter(Boolean).length;
+
+        if (length < 6) return { score: 1, message: 'Это даже не пароль, а так… пин от телефона.' };
+        if (length < 8 && variety < 3) return { score: 2, message: 'Слабовато. Брутфорс справится за пару секунд.' };
+        if (length >= 8 && variety === 2) return { score: 3, message: 'Середнячок. Добавь спецсимвол или заглавные.' };
+        if (length >= 10 && variety >= 3) return { score: 4, message: 'Неплохо. Но для важного аккаунта лучше длиннее 12.' };
+        if (length >= 12 && variety === 4) return { score: 5, message: 'Годный пароль! С таким и банк не страшно.' };
+        return { score: 4, message: 'Хорошая длина, но разнообразий символов маловато.' };
+    }
+
+    checkBtn.addEventListener('click', () => {
+        const pwd = passwordInput.value;
+        const { message } = analyzePassword(pwd);
+        verdictDiv.textContent = message;
+        verdictDiv.style.color = '#1f2328';
+    });
+
+    // Викторина «Фишинг или нет»
+    const quizQuestions = [
+        { url: 'steamcommuniity.com/login', isPhish: true, explanation: 'Две «i» вместо одной — классика.' },
+        { url: 'google.com/search', isPhish: false, explanation: 'Чистый Google. Но проверять строку всё равно нужно.' },
+        { url: 'support-vk.com/reset', isPhish: true, explanation: 'Настоящий ВК — vk.com. Дефис и левое слово — тревожный знак.' },
+        { url: 'paypal.com/summary', isPhish: false, explanation: 'Всё верно, домен paypal.com.' },
+        { url: 'iCloud.com.ru', isPhish: true, explanation: 'Подделка: лишний домен .ru после .com. Настоящий iCloud — icloud.com.' }
+    ];
+    let currentQuiz = 0;
+
+    const questionEl = document.getElementById('phishQuestion');
+    const resultEl = document.getElementById('phishResult');
+    const explainEl = document.getElementById('phishExplanation');
+    const phishBtn = document.getElementById('phishBtn');
+    const realBtn = document.getElementById('realBtn');
+    const nextBtn = document.getElementById('nextPhishBtn');
+
+    function loadQuizQuestion(index) {
+        const q = quizQuestions[index];
+        questionEl.textContent = q.url;
+        resultEl.textContent = '';
+        explainEl.textContent = '';
+    }
+
+    function answerQuiz(userSaysPhish) {
+        const q = quizQuestions[currentQuiz];
+        if (userSaysPhish === q.isPhish) {
+            resultEl.textContent = '✅ Верно!';
+            resultEl.style.color = '#1a7f37';
+            explainEl.textContent = q.explanation;
+        } else {
+            resultEl.textContent = '❌ Мимо.';
+            resultEl.style.color = '#cf222e';
+            explainEl.textContent = q.isPhish ? 'Это подделка: ' + q.explanation : 'Это настоящий домен: ' + q.explanation;
+        }
+    }
+
+    phishBtn.addEventListener('click', () => answerQuiz(true));
+    realBtn.addEventListener('click', () => answerQuiz(false));
+    nextBtn.addEventListener('click', () => {
+        currentQuiz = (currentQuiz + 1) % quizQuestions.length;
+        loadQuizQuestion(currentQuiz);
+        resultEl.textContent = '';
+        explainEl.textContent = '';
+    });
+
+    // Инициализация первого вопроса
+    loadQuizQuestion(0);
 </script>
 </body>
 </html>
